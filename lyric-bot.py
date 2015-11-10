@@ -21,21 +21,23 @@ lyrics = [
 	}
 ]
 
+def formatStr(writeStr):
+	"{\"response_type\":\"in_channel\",\"text\":\"" + writeStr + "\"}"
+
 def pickSongLogic():
 	pickedSong = lyrics[random.randrange(len(lyrics))]
 	writeStr = "_" + pickedSong["lyric"] + "_ -- *" + pickedSong["band"] + ", " + pickedSong["song"] + "*"
 
-	return "{\"response_type\":\"in_channel\",\"text\":\"" + writeStr + "\"}"
+	return writeStr
 
 class gigaHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 	def do_POST(self):
 		print("POST")
-		print(self.request)
 		self.send_response(200)
 		self.send_header("Content-type", "application/json")
 		self.end_headers()
 
-		self.wfile.write(pickSongLogic)
+		self.wfile.write(formatStr("@GigabyteGiant will implement this soon enough..."))
 
 	def do_GET(self):
 		print(self.request)
@@ -43,7 +45,7 @@ class gigaHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 		self.send_header("Content-type", "application/json")
 		self.end_headers()
 
-		self.wfile.write(pickSongLogic())
+		self.wfile.write(formatStr(pickSongLogic()))
 
 httpd = BaseHTTPServer.HTTPServer(("107.191.102.11", 5555), gigaHTTPRequestHandler)
 httpd.serve_forever()
