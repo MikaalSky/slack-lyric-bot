@@ -43,7 +43,7 @@ class gigaHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 		self.send_header("Content-type", "application/json")
 		self.end_headers()
 
-		self.wfile.write(pickSongLogic)
+		self.wfile.write(pickSongLogic())
 
 httpd = BaseHTTPServer.HTTPServer(("107.191.102.11", 5555), gigaHTTPRequestHandler)
 httpd.serve_forever()
