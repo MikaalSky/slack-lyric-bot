@@ -34,9 +34,8 @@ class lyricBotHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
         cmdTxt = requestFileTxt.split("&text=")[1].split("&")[0]
 
-        if (cmdTxt.split(" ")[0] == "add") {
+        if (cmdTxt.split(" ")[0] == "add"):
             print("They want to add a song!")
-        }
 
     def do_GET(self):
         print("GET request")
