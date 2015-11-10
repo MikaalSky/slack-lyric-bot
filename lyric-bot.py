@@ -1,7 +1,7 @@
 import random
 import BaseHTTPServer
 
-HOSTNAME = ""
+HOSTNAME = "0.0.0.0"
 PORTNUMB = 5555
 
 # TODO (Gigabyte Giant): Move this to a JSON file
