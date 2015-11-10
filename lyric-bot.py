@@ -4,31 +4,16 @@ import BaseHTTPServer
 HOSTNAME = "0.0.0.0"
 PORTNUMB = 5555
 
-# TODO (Gigabyte Giant): Move this to a JSON file
-lyrics = [
-    {
-        "lyric": "If you choose not to decide, you still have made a choice",
-        "band": "Rush",
-        "song": "Freewill"
-    },
-    {
-        "lyric": "All that you can do is wish them well",
-        "band": "Rush",
-        "song": "Wish them well"
-    },
-    {
-        "lyric": "The measure of a life is a measure of love and respect, so hard to earn, so easily burned",
-        "band": "Rush",
-        "song": "The Garden"
-    }
-]
+lyricFile = "./lyrics.txt"
+
+lyrics = []
 
 def doJSONResponse(responseText):
     return "{\"response_type\":\"in_channel\",\"text\":\"" + responseText + "\"}"
 
 def pickRandomLyric():
     pickedSong = lyrics[random.randrange(len(lyrics))]
-    return "_" + pickedSong["lyric"] + "_ -- *" + pickedSong["band"] + ", " + pickedSong["song"] + "*"
+    return str(pickedSong)
 
 class lyricBotHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     # TODO (Gigabyte Giant): Support POST requests
@@ -41,6 +26,13 @@ class lyricBotHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.end_headers()
 
         self.wfile.write(doJSONResponse(pickRandomLyric()))
+
+print("Initializing lyrics file")
+
+for ln in open(lyricFile, "r"):
+    lyrics.append(ln)
+
+print("Loaded " + str(len(lyrics)) + " song lyrics!")
 
 httpServer = BaseHTTPServer.HTTPServer((HOSTNAME, PORTNUMB), lyricBotHTTPRequestHandler)
 print("HTTP Server started at " + HOSTNAME + ":" + str(PORTNUMB))
