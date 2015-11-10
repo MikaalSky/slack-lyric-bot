@@ -23,11 +23,11 @@ lyrics = [
 
 class gigaHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 	def do_GET(self):
-		print(self.request)
+	print(self.request)
 		self.send_response(200)
 		self.send_header("Content-type", "application/json")
 		self.end_headers()
-	
+
 		pickedSong = lyrics[random.randrange(len(lyrics))]
 
 		writeStr = "_" + pickedSong["lyric"] + "_ -- *" + pickedSong["band"] + ", " + pickedSong["song"] + "*"
