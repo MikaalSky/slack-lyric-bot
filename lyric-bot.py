@@ -13,6 +13,11 @@ lyrics = [
 		"lyric": "All that you can do is wish them well",
 		"band": "Rush",
 		"song": "Wish them well"
+	},
+	{
+		"lyric": "The measure of a life is a measure of love and respect, so hard to earn so easily burned",
+		"band": "Rush",
+		"song": "The Garden"
 	}
 ]
 
