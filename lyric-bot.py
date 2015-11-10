@@ -38,11 +38,8 @@ class gigaHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 		self.end_headers()
 		
 		data = self.rfile.read()
-
-        cmdTxt = str(str(data).split("&text=")[1]).split("&")[0]
-
+        cmdTxt = str(str(data).split("&text=")[1]).split("&")[0])
         print(cmdTxt)
-		
 		self.wfile.write(formatStr("@GigabyteGiant will implement this soon enough..."))
 
 	def do_GET(self):
