@@ -1,7 +1,7 @@
 import random
 import BaseHTTPServer
 
-HOSTNAME = "localhost"
+HOSTNAME = ""
 PORTNUMB = 5555
 
 # TODO (Gigabyte Giant): Move this to a JSON file
@@ -37,7 +37,7 @@ class lyricBotHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         print("GET request")
 
         self.send_response(200)
-        self.send_headers("Content-Type", "application/json")
+        self.send_header("Content-Type", "application/json")
         self.end_headers()
 
         self.wfile.write(doJSONResponse(pickRandomLyric()))
