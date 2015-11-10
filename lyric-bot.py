@@ -30,7 +30,7 @@ class gigaHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 	
 		pickedSong = lyrics[random.randrange(len(lyrics))]
 
-		writeStr = pickedSong["lyric"] + " -- " + pickedSong["band"] + ", " + pickedSong["song"]
+		writeStr = "_" + pickedSong["lyric"] + "_ -- *" + pickedSong["band"] + ", " + pickedSong["song"] + "*"
 
 		self.wfile.write("{\"response_type\":\"in_channel\",\"text\":\"" + writeStr + "\"}")
 
